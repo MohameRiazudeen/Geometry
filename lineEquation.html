@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+svg{border:2px solid red}
+</style>
+<script type="text/javascript">
+
+document.addEventListener("DOMContentLoaded", function(event) {
+  var [circlex,circley,NS]=[0,0,"http://www.w3.org/2000/svg"];
+  var svgCircle = document.getElementById("svg_circles");
+  var line = document.createElementNS(NS, "line"), line2 = document.createElementNS(NS, "line");
+  line.setAttribute("x1",-100);line.setAttribute("y1",0);
+line.setAttribute("x2",100);line.setAttribute("y2",0);
+  line2.setAttribute("x1",0);line2.setAttribute("y1",-100);
+  line2.setAttribute("x2",0);line2.setAttribute("y2",100);
+  line.setAttribute("stroke-width",1);line.setAttribute("stroke","black");
+  line2.setAttribute("stroke-width",1);line2.setAttribute("stroke","black");
+  for (var i = -100; i < 100; i++) {
+    var circle = document.createElementNS(NS,"circle");
+    circle.setAttribute("cx",circlex+i);
+    circle.setAttribute("cy",-(.3*(circlex+i)+50));
+    circle.setAttribute("r",1);
+    circle.setAttribute("fill","red");
+    svgCircle.appendChild(circle);
+  };
+  for (var j=-8;j<8;j++){
+  for (var i =-100; i < 100; i++) {
+  var circle1= document.createElementNS(NS,"circle");
+  circle1.setAttribute("cx",circlex+i);
+  //circle1.setAttribute("cy",-(circlex+i));
+  circle1.setAttribute("cy",-j*(circlex+i));
+  circle1.setAttribute("r",1);
+  circle1.setAttribute("fill","green");
+  svgCircle.appendChild(circle1);
+  };
+  };
+  svgCircle.appendChild(line);
+
+  svgCircle.appendChild(line2);
+});
+</script>
+</head>
+<body>
+<svg id="svg_circles" viewBox="-100 -100 200 200" xmlns="http://www.w3.org/2000/svg">
+</svg>
+</body>
+</html>
